@@ -1,0 +1,7 @@
+Flask==2.1.1
+flask-swagger-ui==3.25.0
+werkzeug==2.0.0
+Flask-Cors==3.0.9
+cflib==0.1.17
+firebase-admin==5.2.0
+itsdangerous==2.0.1
