@@ -22,9 +22,9 @@ app.debug = True
 ##################################################### Main loop #####################################################
 if __name__ == '__main__': # pragma: no cover
     port = int(os.getenv('PORT', 5000))
-    init_db()
+    #init_db()
     
-    db_new_log_entry(f"{url} - Starting app")
+    #db_new_log_entry(f"{url} - Starting app")
 
     print("Starting app on port %d" % port)
 
