@@ -1,7 +1,7 @@
 import os,sys
 from celery import Celery,current_task,states
 from celery.exceptions import Ignore
-import ssl
+import ssl, datetime
 
 app = Celery()
 app.config_from_object("celery_settings")
@@ -25,4 +25,6 @@ def on_failure(self, exc, task_id, args, kwargs, einfo):
 ############################################## Asynchronous Tasks ############################################
 @app.task(on_failure=on_failure, rate_limit='4/m')
 def endpoint():
+    now = datetime.datetime.utcnow()
+    print(f'debug {now}')
     return 'test endpoint'

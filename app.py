@@ -22,7 +22,7 @@ app.debug = True
 def endpoint():
     task = async_tasks.endpoint.delay()
 
-    progress_page_JSON_url = os.getenv('BASE_URL', 'localhost:5000') + '/status/move_assets_to_tags_new/' + str(task.id)
+    progress_page_JSON_url = os.getenv('BASE_URL', 'localhost:5000') + '/status/endpoint/' + str(task.id)
     progress_page_md_link = '[Current Status Link](https://'+ progress_page_JSON_url +')'
     return jsonify([{"text":"The request was started and will be worked on in the background, track it here:"},{"progress_page": progress_page_JSON_url},{"text": progress_page_md_link}]), 202
 
