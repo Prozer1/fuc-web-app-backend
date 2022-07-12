@@ -1,6 +1,7 @@
 import os,sys
 from celery import Celery,current_task,states
 from celery.exceptions import Ignore
+import ssl
 
 app = Celery()
 app.config_from_object("celery_settings")
@@ -9,7 +10,7 @@ sys.path.append('./')
 
 if os.getenv("IS_HEROKU"):
     # if running on Heroku, set the redis_backend_use_ssl config var
-    app.conf.redis_backend_use_ssl = {"ssl_cert_reqs": "none"}
+    app.conf.redis_backend_use_ssl = {"ssl_cert_reqs": ssl.CERT_NONE}
 
 ############################################## Utility Functions for ASYNC tasks ############################################
 def on_failure(self, exc, task_id, args, kwargs, einfo):
